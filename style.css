@@ -43,18 +43,27 @@ body {
   height: 100vh;
   z-index: 1;
   color: white;
-  font-family: 'monospace';
+  font-family: 'Roboto Mono', monospace;
   padding: 2rem;
+
+  text-shadow: 2px 2px #121212;
 }
 
 .content ul {
   display: flex;
   list-style: none;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   padding: 0;
+}
+
+.content a {
+  text-decoration: underline;
+  color: white;
+  text-shadow: none;
 }
 
 .content svg {
   fill: white;
-  width: 4rem;
+  width: 3rem;
+  margin-right: 3rem;
 }
