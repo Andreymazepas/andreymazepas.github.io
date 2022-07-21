@@ -1,24 +1,29 @@
+:root {
+  --bg-color1: #000000;
+  --bg-color2: #24243e;
+}
+
 html {
   width: 100%;
   height: 100%;
 
-  background: #11e8bb; /* Old browsers */
+  background: var(--bg-color1); /* Old browsers */
   background: -moz-linear-gradient(
     top,
-    #11e8bb 0%,
-    #8200c9 100%
+    var(--bg-color1) 0%,
+    var(--bg-color2) 100%
   ); /* FF3.6-15 */
   background: -webkit-linear-gradient(
     top,
-    #11e8bb 0%,
-    #8200c9 100%
+    var(--bg-color1) 0%,
+    var(--bg-color2) 100%
   ); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     to bottom,
-    #11e8bb 0%,
-    #8200c9 100%
+    var(--bg-color1) 0%,
+    var(--bg-color2) 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11e8bb', endColorstr='#8200c9',GradientType=0 ); /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='var(--bg-color1)', endColorstr='var(--bg-color2)',GradientType=0 ); /* IE6-9 */
   overflow: hidden;
 }
 
@@ -30,4 +35,26 @@ body {
 #canvas {
   z-index: -1;
   position: absolute;
+}
+
+.content {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  z-index: 1;
+  color: white;
+  font-family: 'monospace';
+  padding: 2rem;
+}
+
+.content ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.content svg {
+  fill: white;
+  width: 4rem;
 }
