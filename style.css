@@ -1,9 +1,29 @@
 body {
   font-family: monospace;
-  background-color: #f0f0f0;
-  color: #333333;
+  background-color: #C5C5C5;
+  color: #474747;
 }
+
+container {
+  padding: 6em;
+}
+  
 
 h1 {
   font-size: 2em;
 }
+
+h2 {
+  font-size: 1.5em;
+}
+
+p {
+  font-size: 1em;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #474747;
+}
+
