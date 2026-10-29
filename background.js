@@ -223,8 +223,7 @@
     }
     gl.uniform1f(uniforms.linkStrength, linkStrength);
     gl.uniform1f(uniforms.linkRadius, (touchActive ? 85 : 140) * dpr);
-    const spacing = Math.round(Math.max(28, Math.min(48, Math.min(innerWidth, innerHeight) / 24)));
-    gl.uniform1f(uniforms.spacing, spacing * dpr);
+    gl.uniform1f(uniforms.spacing, 28 * dpr);
     gl.uniform1f(uniforms.radius, 3 * dpr);
     gl.uniform1f(uniforms.displacementStrength, 12 * dpr);
     gl.uniform1f(uniforms.influenceRadius, 250 * dpr);
