@@ -157,6 +157,8 @@
   let pointerInside = false;
   let pointerStrength = 0;
   let heldPointer = null;
+  let pressPosition = [0, 0];
+  let touchActive = false;
   let pressStrength = 0;
   let linkStrength = 0;
   let hoveredLink = null;
@@ -200,8 +202,8 @@
     gl.uniform4fv(uniforms.ripples, rippleValues);
     gl.uniform1f(uniforms.pixelRatio, dpr);
     gl.uniform3f(uniforms.press,
-      heldPointer ? heldPointer.x * width : 0,
-      heldPointer ? (1 - heldPointer.y) * height : 0,
+      pressPosition[0] * width,
+      (1 - pressPosition[1]) * height,
       pressStrength
     );
     if (canvas.width !== width || canvas.height !== height) {
@@ -220,7 +222,7 @@
       );
     }
     gl.uniform1f(uniforms.linkStrength, linkStrength);
-    gl.uniform1f(uniforms.linkRadius, 140 * dpr);
+    gl.uniform1f(uniforms.linkRadius, (touchActive ? 85 : 140) * dpr);
     const spacing = Math.round(Math.max(28, Math.min(48, Math.min(innerWidth, innerHeight) / 24)));
     gl.uniform1f(uniforms.spacing, spacing * dpr);
     gl.uniform1f(uniforms.radius, 3 * dpr);
@@ -252,9 +254,11 @@
     if (heldPointer?.id === event.pointerId) {
       heldPointer.x = event.clientX / innerWidth;
       heldPointer.y = event.clientY / innerHeight;
+      pressPosition = [heldPointer.x, heldPointer.y];
       schedule();
     }
-    if (event.pointerType === 'touch' && !heldPointer) return;
+    if (event.pointerType === 'touch') return;
+    touchActive = false;
     targetMouse = [event.clientX, event.clientY];
     if (!pointerInside) mouse = [...targetMouse];
     pointerInside = true;
@@ -274,6 +278,17 @@
       x: event.clientX / innerWidth,
       y: event.clientY / innerHeight,
     };
+    pressPosition = [heldPointer.x, heldPointer.y];
+    touchActive = event.pointerType === 'touch';
+    if (touchActive) {
+      pointerInside = false;
+      pointerStrength = 0;
+      hoveredLink = null;
+      focusedLink = null;
+      linkStrength = 0;
+      schedule();
+      return;
+    }
     targetMouse = [event.clientX, event.clientY];
     if (!pointerInside) mouse = [...targetMouse];
     pointerInside = true;
@@ -282,6 +297,11 @@
 
   window.addEventListener('pointerup', event => {
     if (heldPointer?.id !== event.pointerId) return;
+    if (event.pointerType === 'touch') {
+      heldPointer = null;
+      schedule();
+      return;
+    }
     if (ripples.length === 3) ripples.shift();
     ripples.push({
       x: event.clientX / innerWidth,
