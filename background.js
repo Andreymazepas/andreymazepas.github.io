@@ -296,11 +296,6 @@
 
   window.addEventListener('pointerup', event => {
     if (heldPointer?.id !== event.pointerId) return;
-    if (event.pointerType === 'touch') {
-      heldPointer = null;
-      schedule();
-      return;
-    }
     if (ripples.length === 3) ripples.shift();
     ripples.push({
       x: event.clientX / innerWidth,
