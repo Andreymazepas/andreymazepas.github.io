@@ -41,7 +41,9 @@ p {
   max-width: 520px;
 }
 
-p + p { margin-top: 1.2em; }
+p + p {
+  margin-top: 1.2em;
+}
 
 #bgCanvas {
   position: fixed;
@@ -52,6 +54,7 @@ p + p { margin-top: 1.2em; }
 }
 
 .links {
+  font-size: 0.9em;
   margin-top: 2.5em;
   display: flex;
   flex-wrap: wrap;
@@ -69,13 +72,14 @@ a {
     color 0.2s;
 }
 
-a:hover, a:focus-visible {
+a:hover,
+a:focus-visible {
   color: #ffffff;
   border-bottom-color: #dddddd;
 }
 
-.links { font-size: 0.9em; }
-
 @media (max-width: 600px) {
-  .container { padding: 2em; }
+  .container {
+    padding: 2em;
+  }
 }
