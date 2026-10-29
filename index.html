@@ -5,30 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Andrey Mazépas - Graphics Engineer specializing in 3D visualization for robotics and drone systems."
+      content="Andrey Mazépas — software engineer in Osaka. Frontend, 3D visualization, point clouds, and robotics."
     />
     <title>Andrey Mazépas</title>
-    <link rel="stylesheet" href="/style.css" />
+    <meta name="theme-color" content="#1a1a1a" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./background.js"></script>
   </head>
 
   <body>
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
     <main class="container">
       <h1>Andrey Mazépas</h1>
-      <h2>Graphics Engineer</h2>
+      <h2>Senior Software Engineer</h2>
       <p>
-        I build 3D visualization tools for drones, robots, and autonomous
-        systems. Currently based in Osaka, Japan, leading point cloud software
+        I build web applications and 3D visualization tools for robots, drones,
+        and spatial data. Based in Osaka, Japan, leading point cloud software
         development at
         <a href="https://reddotdrone.jp" target="_blank" rel="noopener"
           >Red Dot Drone Japan</a
         >.
       </p>
+      <p>
+        Previously at <a href="https://formant.io" target="_blank" rel="noopener">Formant</a>,
+        working on the 3D stack for robot fleets. Mostly TypeScript, React,
+        and Three.js.
+      </p>
 
-      <section class="links">
-        <a href="/Andrey Mazepas - Resume.pdf" target="_blank" rel="noopener"
+      <nav class="links" aria-label="Profile links">
+        <a href="./Andrey Mazepas - Resume.pdf" target="_blank" rel="noopener"
           >Resume</a
         >
-        <a href="https://github.com/andreyRDDJ" target="_blank" rel="noopener"
+        <a href="https://github.com/andreymazepas" target="_blank" rel="noopener"
           >GitHub</a
         >
         <a
@@ -38,7 +46,7 @@
           >LinkedIn</a
         >
         <a href="mailto:andreymazepas@gmail.com">Email</a>
-      </section>
+      </nav>
     </main>
   </body>
 </html>
