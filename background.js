@@ -107,7 +107,7 @@
       float dot = smoothstep(pointRadius, pointRadius - 1., length(p - displacedGrid));
       float fade = smoothstep(influenceRadius, 0., distance) * pointerStrength;
       fade = max(max(max(fade, wave * .7), gathering * .55), clickLight);
-      fade *= mix(.85, 1., depth);
+      fade = pow(clamp(fade, 0., 1.), .75) * mix(.85, 1., depth);
       vec3 dotTint = mix(dotColor, bgColor, 1. - fade);
       gl_FragColor = vec4(mix(bgColor, dotTint, dot), 1.);
     }
@@ -142,11 +142,7 @@
   }
 
   gl.uniform3f(uniforms.bgColor, 26 / 255, 26 / 255, 26 / 255);
-  gl.uniform3f(uniforms.dotColor,
-    (247 + 26) / 255 * .4,
-    (246 + 26) / 255 * .4,
-    (243 + 26) / 255 * .4
-  );
+  gl.uniform3f(uniforms.dotColor, 202 / 255, 200 / 255, 194 / 255);
 
   const ripples = [];
   const rippleValues = new Float32Array(12);
